@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 14% 96%;
+    --foreground: 0 0% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 8%;
+    --primary: 0 0% 8%;
+    --primary-foreground: 40 14% 96%;
+    --secondary: 40 10% 92%;
+    --secondary-foreground: 0 0% 8%;
+    --muted: 40 10% 92%;
+    --muted-foreground: 0 0% 43%;
+    --accent: 40 60% 57%;
+    --accent-foreground: 0 0% 8%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 40 10% 88%;
+    --input: 40 10% 88%;
+    --ring: 40 60% 57%;
+    --radius: 1.375rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+    background-color: #F6F5F2;
+    overflow-x: hidden;
+  }
+}
+
+/* Typography */
+.font-display {
+  font-family: 'Sora', sans-serif;
+}
+
+.font-mono {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.font-body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Grain overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Floating beans animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+.floating-bean {
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-bean-slow {
+  animation: float 8s ease-in-out infinite;
+}
+
+.floating-bean-fast {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Section base styles */
+.section-pinned {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Text shadow for readability on images */
+.text-shadow {
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F6F5F2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #141414;
+  border-radius: 4px;
+}
+
+/* Button styles */
+.btn-primary {
+  @apply px-8 py-3 rounded-full border-2 border-[#D7A04D] text-[#141414] font-medium transition-all duration-300;
+  background: transparent;
+}
+
+.btn-primary:hover {
+  @apply bg-[#D7A04D] text-white;
+  transform: translateY(-2px);
+}
+
+/* Card styles */
+.card-japandi {
+  @apply rounded-[22px] overflow-hidden;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+}
+
+/* Wheel segment styles */
+.wheel-segment {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.wheel-segment:hover {
+  filter: brightness(1.1);
+}
+
+.wheel-segment.active {
+  stroke: #D7A04D;
+  stroke-width: 3;
+}
+
+/* Smooth transitions */
+.transition-smooth {
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hide scrollbar for cleaner look */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
